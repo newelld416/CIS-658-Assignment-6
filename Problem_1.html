@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+
+    <script>
+        function validate(event) {
+            //event.preventDefault();
+
+            var form = document.getElementById('form');
+            var name = document.getElementById('name');
+            var errorMessage = document.getElementById('errorname');
+
+            errorMessage.innerText = '';
+            if (name.value === '') {
+                errorMessage.innerText = 'Name must be entered';
+            } else if (name.value.length > 24) {
+                errorMessage.innerText = 'Name cannot be longer than 24 characters';
+            }
+
+            var age = document.getElementById('age');
+            errorMessage = document.getElementById('errorage');
+
+            errorMessage.innerText = '';
+            if (age.value === '') {
+                errorMessage.innerText = 'Age must be entered';
+            } else if (isNaN(age.value)) {
+                errorMessage.innerText = 'Age must be a number';
+            }
+
+            var gender = document.getElementById('gender');
+            errorMessage = document.getElementById('errorgender');
+
+            errorMessage.innerText = '';
+            if (gender.value === '') {
+                errorMessage.innerText = 'Gender must be entered';
+            } else if (gender.value.toLowerCase() !== 'male' && gender.value.toLowerCase() !== 'female') {
+                errorMessage.innerText = 'Gender must be male or female';
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <form id="form" onsubmit="validate(event)" action="#">
+
+        Name: <input type="text" id="name" name="name" />
+        <strong><span class="error-message" id="errorname"></span></strong><br /><br />
+
+        Age: <input type="text" id="age" name="age" />
+        <strong><span class="error-message" id="errorage"></span></strong><br /><br />
+
+        Gender: <input type="text" id="gender" name="gender" />
+        <strong><span class="error-message" id="errorgender"></span></strong><br /><br />
+
+
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>
