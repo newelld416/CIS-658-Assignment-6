@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script>
+        function checkbox_change(e, t) {
+
+            var shipping_name = document.getElementById("shipping_name");
+            var shipping_address = document.getElementById("shipping_address");
+            var shipping_city = document.getElementById("shipping_city");
+            var shipping_state = document.getElementById("shipping_state");
+            var shipping_zip = document.getElementById("shipping_zip");
+
+            var billing_name = document.getElementById("billing_name");
+            var billing_address = document.getElementById("billing_address");
+            var billing_city = document.getElementById("billing_city");
+            var billing_state = document.getElementById("billing_state");
+            var billing_zip = document.getElementById("billing_zip");
+
+            var checkbox = document.getElementById("check");
+            if (checkbox.checked == true){
+                shipping_name.value = billing_name.value;
+                shipping_address.value = billing_address.value;
+                shipping_city.value = billing_city.value;
+                shipping_state.value = billing_state.value;
+                shipping_zip.value = billing_zip.value;
+            }
+
+            shipping_name.disabled = checkbox.checked;
+            shipping_address.disabled = checkbox.checked;
+            shipping_city.disabled = checkbox.checked;
+            shipping_state.disabled = checkbox.checked;
+            shipping_zip.disabled = checkbox.checked;
+        }
+    </script>
+</head>
+
+<body>
+    <form id="form" onsubmit="validate(event)" action="#">
+
+        <h1>Billing Address</h1>
+
+        Name: <input type="text" id="billing_name" name="billing_name" /><br><br>
+        Address: <input type="text" id="billing_address" name="billing_address" /><br><br>
+        City: <input type="text" id="billing_city" name="billing_city" /><br><br>
+        State: <input type="text" id="billing_state" name="billing_state" /><br><br>
+        Zip: <input type="text" id="billing_zip" name="billing_zip" /><br><br>
+        
+        <h1>Shipping Address</h1>
+
+        <input type="checkbox" name="check" id="check" onclick="checkbox_change()"> Use Billing Address<br><br>
+
+        Name: <input type="text" id="shipping_name" name="shipping_name" /><br><br>
+        Address: <input type="text" id="shipping_address" name="shipping_address" /><br><br>
+        City: <input type="text" id="shipping_city" name="shipping_city" /><br><br>
+        State: <input type="text" id="shipping_state" name="shipping_state" /><br><br>
+        Zip: <input type="text" id="shipping_zip" name="shipping_zip" /><br><br>
+
+        
+    </form>
+</body>
+
+</html>
