@@ -16,35 +16,30 @@
     $(document).ready(function () {
         $('form').submit(function (e) {
             e.preventDefault();
-            var form = document.getElementById('form');
-            var name = document.getElementById('name');
-            var errorMessage = document.getElementById('errorname');
 
-            errorMessage.innerText = '';
+            $('#errorname').text('');
+            $('#errorage').text('');
+            $('#errorgender').text('');
+            
+            var name = $('#name')[0];
             if (name.value === '') {
-                errorMessage.innerText = 'Name must be entered';
+                $('#errorname').text('Name must be entered');
             } else if (name.value.length > 24) {
-                errorMessage.innerText = 'Name cannot be longer than 24 characters';
+                $('#errorname').text('Name cannot be longer than 24 characters');
             }
 
-            var age = document.getElementById('age');
-            errorMessage = document.getElementById('errorage');
-
-            errorMessage.innerText = '';
+            var age = $('#age')[0];
             if (age.value === '') {
-                errorMessage.innerText = 'Age must be entered';
+                $('#errorage').text('Age must be entered');
             } else if (isNaN(age.value)) {
-                errorMessage.innerText = 'Age must be a number';
+                $('#errorage').text('Age must be a number');
             }
 
-            var gender = document.getElementById('gender');
-            errorMessage = document.getElementById('errorgender');
-
-            errorMessage.innerText = '';
+            var gender = $('#gender')[0];
             if (gender.value === '') {
-                errorMessage.innerText = 'Gender must be entered';
+                $('#errorgender').text('Gender must be entered');
             } else if (gender.value.toLowerCase() !== 'male' && gender.value.toLowerCase() !== 'female') {
-                errorMessage.innerText = 'Gender must be male or female';
+                $('#errorgender').text('Gender must be male or female');
             }
         });
     });
