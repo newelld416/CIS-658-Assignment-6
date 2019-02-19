@@ -2,39 +2,27 @@
 <html>
 
 <head>
-
-    <script>
-        function checkbox_change(e, t) {
-
-            var shipping_name = document.getElementById("shipping_name");
-            var shipping_address = document.getElementById("shipping_address");
-            var shipping_city = document.getElementById("shipping_city");
-            var shipping_state = document.getElementById("shipping_state");
-            var shipping_zip = document.getElementById("shipping_zip");
-
-            var billing_name = document.getElementById("billing_name");
-            var billing_address = document.getElementById("billing_address");
-            var billing_city = document.getElementById("billing_city");
-            var billing_state = document.getElementById("billing_state");
-            var billing_zip = document.getElementById("billing_zip");
-
-            var checkbox = document.getElementById("check");
-            if (checkbox.checked == true){
-                shipping_name.value = billing_name.value;
-                shipping_address.value = billing_address.value;
-                shipping_city.value = billing_city.value;
-                shipping_state.value = billing_state.value;
-                shipping_zip.value = billing_zip.value;
-            }
-
-            shipping_name.disabled = checkbox.checked;
-            shipping_address.disabled = checkbox.checked;
-            shipping_city.disabled = checkbox.checked;
-            shipping_state.disabled = checkbox.checked;
-            shipping_zip.disabled = checkbox.checked;
-        }
-    </script>
+    <script type='text/javascript' src='jquery.min.js'></script>
 </head>
+
+<script>
+    function checkbox_change(e, t) {
+
+        if ($('#check')[0].checked) {
+            $('#shipping_name').val($('#billing_name')[0].value);
+            $('#shipping_address').val($('#billing_address')[0].value);
+            $('#shipping_city').val($('#billing_city')[0].value);
+            $('#shipping_state').val($('#billing_state')[0].value);
+            $('#shipping_zip').val($('#billing_zip')[0].value);
+        }
+
+        $('#shipping_name')[0].disabled = $('#check')[0].checked;
+        $('#shipping_address')[0].disabled = $('#check')[0].checked;
+        $('#shipping_city')[0].disabled = $('#check')[0].checked;
+        $('#shipping_state')[0].disabled = $('#check')[0].checked;
+        $('#shipping_zip')[0].disabled = $('#check')[0].checked;
+    }
+</script>
 
 <body>
     <form id="form" onsubmit="validate(event)" action="#">
@@ -46,7 +34,7 @@
         City: <input type="text" id="billing_city" name="billing_city" /><br><br>
         State: <input type="text" id="billing_state" name="billing_state" /><br><br>
         Zip: <input type="text" id="billing_zip" name="billing_zip" /><br><br>
-        
+
         <h1>Shipping Address</h1>
 
         <input type="checkbox" name="check" id="check" onclick="checkbox_change()"> Use Billing Address<br><br>
@@ -57,7 +45,7 @@
         State: <input type="text" id="shipping_state" name="shipping_state" /><br><br>
         Zip: <input type="text" id="shipping_zip" name="shipping_zip" /><br><br>
 
-        
+
     </form>
 </body>
 
